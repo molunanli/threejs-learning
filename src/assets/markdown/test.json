@@ -1,0 +1,183 @@
+{
+  "item3": {
+    "id": 1,
+    "title": "默认标题",
+    "date": "2025年7月13日",
+    "readTime": "5分钟",
+    "views": "1,000",
+    "tags": [
+      "前端开发",
+      "JavaScript",
+      "框架设计",
+      "React",
+      "Vue"
+    ],
+    "content": [
+      {
+        "type": "paragraph",
+        "text": "重要的三个部分"
+      },
+      {
+        "type": "paragraph",
+        "text": "场景、相机、渲染器"
+      },
+      {
+        "type": "code",
+        "language": "plain",
+        "code": "// 创建3D场景对象Scene\nconst scene = new THREE.Scene();\n\n// 实例化一个透视投影相机对象\nconst camera = new THREE.PerspectiveCamera();\n\n// 创建渲染器对象\nconst renderer = new THREE.WebGLRenderer();\n"
+      },
+      {
+        "type": "paragraph",
+        "text": "总结来说就是<font style=\"background-color:#FBDE28;\">创建一个可供观测的场景</font>，在场景中放入可以观测到的模型。<font style=\"background-color:#FBDE28;\">通过相机进行观测</font>（相机类似于眼睛），<font style=\"background-color:#FBDE28;\">最后将场景和相机进行渲染</font>，使之展示在网页中。"
+      },
+      {
+        "type": "paragraph",
+        "text": "场景中可以放入各种<font style=\"background-color:#FBDE28;\">模型</font>（网格模型、外部导入的模型），模型由<font style=\"background-color:#FBDE28;\">几何体</font>和<font style=\"background-color:#FBDE28;\">材质</font>组成"
+      },
+      {
+        "type": "paragraph",
+        "text": "几何体"
+      },
+      {
+        "type": "code",
+        "language": "plain",
+        "code": "//创建一个长方体几何对象Geometry\nconst geometry = new THREE.BoxGeometry(100, 100, 100); \n"
+      },
+      {
+        "type": "paragraph",
+        "text": "![](https://cdn.nlark.com/yuque/0/2025/svg/42866959/1752064074509-912244bb-c2b3-45b1-84ac-b14459822869.svg)"
+      },
+      {
+        "type": "paragraph",
+        "text": "材质"
+      },
+      {
+        "type": "code",
+        "language": "plain",
+        "code": "//创建一个材质对象Material\nconst material = new THREE.MeshBasicMaterial({\n    color: 0xff0000,//0xff0000设置材质颜色为红色\n}); \n"
+      },
+      {
+        "type": "paragraph",
+        "text": "![](https://cdn.nlark.com/yuque/0/2025/svg/42866959/1752064122323-582a8b67-68a6-4754-9ae4-34f9f8a9a68d.svg)"
+      },
+      {
+        "type": "paragraph",
+        "text": "模型"
+      },
+      {
+        "type": "code",
+        "language": "plain",
+        "code": "// 两个参数分别为几何体geometry、材质material\nconst mesh = new THREE.Mesh(geometry, material); //网格模型对象Mesh\n//设置网格模型在三维空间中的位置坐标，默认是坐标原点\nmesh.position.set(0,10,0);"
+      },
+      {
+        "type": "paragraph",
+        "text": "模型创建好了我们需要把他加入到场景中去"
+      },
+      {
+        "type": "code",
+        "language": "plain",
+        "code": "scene.add(mesh); \n"
+      },
+      {
+        "type": "paragraph",
+        "text": "接下来就是用相机观测了"
+      },
+      {
+        "type": "paragraph",
+        "text": "创建相机"
+      },
+      {
+        "type": "code",
+        "language": "plain",
+        "code": "// 实例化一个透视投影相机对象\nconst camera = new THREE.PerspectiveCamera();\n\n"
+      },
+      {
+        "type": "paragraph",
+        "text": "相机的位置，相机在哪里进行观测"
+      },
+      {
+        "type": "code",
+        "language": "plain",
+        "code": "//相机在Three.js三维坐标系中的位置\n// 根据需要设置相机位置具体值\ncamera.position.set(200, 200, 200); \n"
+      },
+      {
+        "type": "paragraph",
+        "text": "看向哪里，默认看向坐标原点"
+      },
+      {
+        "type": "code",
+        "language": "plain",
+        "code": "//相机观察目标指向Threejs 3D空间中某个位置\ncamera.lookAt(0, 0, 0); //坐标原点\ncamera.lookAt(0, 10, 0);  //y轴上位置10\ncamera.lookAt(mesh.position);//指向mesh对应的位置，重心的位置坐标\n"
+      },
+      {
+        "type": "paragraph",
+        "text": "看多大范围，定义相机渲染输出的画面尺寸"
+      },
+      {
+        "type": "code",
+        "language": "plain",
+        "code": "// width和height用来设置Three.js输出的Canvas画布尺寸(像素px)\nconst width = 800; //宽度\nconst height = 500; //高度\n// 30:视场角度, width / height:Canvas画布宽高比, 1:近裁截面, 3000：远裁截面\nconst camera = new THREE.PerspectiveCamera(30, width / height, 1, 3000);\n"
+      },
+      {
+        "type": "paragraph",
+        "text": "![](https://cdn.nlark.com/yuque/0/2025/png/42866959/1752065005222-329c60bd-84c8-41ba-be2e-9897c4061f6a.png)"
+      },
+      {
+        "type": "paragraph",
+        "text": "创建渲染器"
+      },
+      {
+        "type": "code",
+        "language": "plain",
+        "code": "// 创建渲染器对象\nconst renderer = new THREE.WebGLRenderer();\n"
+      },
+      {
+        "type": "paragraph",
+        "text": "设置渲染的范围大小"
+      },
+      {
+        "type": "code",
+        "language": "plain",
+        "code": "// 定义threejs输出画布的尺寸(单位:像素px)\nconst width = 800; //宽度\nconst height = 500; //高度\nrenderer.setSize(width, height); //设置three.js渲染区域的尺寸(像素px)\n"
+      },
+      {
+        "type": "paragraph",
+        "text": "执行渲染操作"
+      },
+      {
+        "type": "code",
+        "language": "plain",
+        "code": "renderer.render(scene, camera); //执行渲染操作\n"
+      },
+      {
+        "type": "paragraph",
+        "text": "将渲染的画面加入html元素上"
+      },
+      {
+        "type": "code",
+        "language": "plain",
+        "code": "document.body.appendChild(renderer.domElement);\n\n\n<div id=\"webgl\" style=\"margin-top: 200px;margin-left: 100px;\"></div>\ndocument.getElementById('webgl').appendChild(renderer.domElement);\n"
+      },
+      {
+        "type": "paragraph",
+        "text": "这样就可以输出一个可供观测的3D模型。"
+      }
+    ],
+    "author": {
+      "name": "作者名称",
+      "title": "作者头衔",
+      "bio": "作者简介",
+      "avatar": "https://via.placeholder.com/150",
+      "social": [
+        {
+          "icon": "fab fa-github",
+          "url": "#"
+        },
+        {
+          "icon": "fab fa-twitter",
+          "url": "#"
+        }
+      ]
+    }
+  }
+}

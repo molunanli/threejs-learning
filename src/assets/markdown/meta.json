@@ -1,0 +1,10 @@
+[
+  {
+    "slug": "vue3-performance",
+    "title": "Vue3 性能优化实践",
+    "excerpt": "深入探讨Vue3的性能优化技巧...",
+    "date": "2023-07-15",
+    "tags": ["Vue", "性能优化"],
+    "cover": "/images/covers/vue3.jpg"
+  }
+]
